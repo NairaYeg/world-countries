@@ -2,7 +2,7 @@ const request = (url, method = "GET", body = null) => {
     const requestConfig = {
       method,
       headers: {
-        "Content-Type": "application/json;charset=utf-8",
+        // "Content-Type": "application/json;charset=utf-8",
       },
     };
   
