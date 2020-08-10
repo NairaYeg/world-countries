@@ -1,0 +1,79 @@
+@import url(./variables.css);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+body {
+    background-image: url(../assets/earth_from_space.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+
+    z-index: -1;
+}
+
+header {
+    height: 70px;
+
+    padding: 0px 30px;
+    background: var(--main-bg-color);
+    z-index: 5;
+    color: white;
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4 ,1fr);
+    margin-top: 10px;
+}
+
+h1 {
+    transition-duration: 0.5s;
+}
+
+h1:hover {
+    font-size: 40px;
+    cursor: pointer;
+} 
+
+#favorites, #search-input, #log-out {
+    margin-top: 13px;
+}
+
+#favorites, #log-out {
+    cursor: pointer;
+}
+
+#favorites:hover, #log-out:hover {
+    text-decoration: underline;
+}
+
+#search-input {
+    width: 200px;
+    padding: 5px 0px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: none;
+    transition-property: width;
+    transition-duration: 0.5s;
+    text-align: center;
+}
+
+#search-input:hover {
+    width: 250px;
+}
+
+.keyboard-icon-wrapper{
+    position: absolute;
+}
+
+.keyboard-icon {
+    padding-top: 20px;
+    padding-right: 40px;
+}
