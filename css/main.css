@@ -97,7 +97,7 @@ tbody tr td {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    /* padding: 10px; */
 }
 
 tbody tr {
@@ -112,9 +112,15 @@ tbody tr {
 .country {
     cursor: pointer;
     /* transition-duration: 0.5s; */
-    padding: 10px;
+    /* padding: 10px; */
 }
 
-.country:hover {
+/* .country:hover {
     width: 250px;
+} */
+
+.bookmarkIcon {
+    display: flex;
+    justify-content: space-between;
 }
+
