@@ -111,16 +111,16 @@ tbody tr {
 
 .country {
     cursor: pointer;
-    /* transition-duration: 0.5s; */
-    /* padding: 10px; */
 }
 
-/* .country:hover {
-    width: 250px;
-} */
+
 
 .bookmarkIcon {
     display: flex;
     justify-content: space-between;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
