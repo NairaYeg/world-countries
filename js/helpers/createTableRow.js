@@ -1,4 +1,4 @@
-import {tableBody} from "../script.js"
+// import {tableBody} from "../script.js"
 import {favoriteCountries} from "./constants.js"
 import {doGet} from "./request.js"
 import {BASE_URL} from "./constants.js"
@@ -8,7 +8,7 @@ import {createBookmarkIcon} from "./createBookmarkIcon.js"
 
 
 
-export function createTableRow({name, flag, nativeName}){
+export function createTableRow(name, flag, tableBody){
     const newRow = tableBody.insertRow(tableBody.length)
 
     let icon = createBookmarkIcon("far")

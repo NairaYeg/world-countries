@@ -11,6 +11,6 @@ doGet("https://restcountries.eu/rest/v2/all")
 .then(countries => {
     tableBody.innerText = ""
     countries.forEach((country) => {
-        createTableRow(country)
+        createTableRow(country.name, country.flag, tableBody)
     });
 })

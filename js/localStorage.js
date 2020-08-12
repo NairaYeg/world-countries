@@ -1,9 +1,8 @@
 import {favoriteCountries} from "./helpers/constants.js"
-// import {BASE_URL} from "./helpers/constants.js"
 
 export  function addItemLocalStorage () {
-        localStorage.setItem("favCountries", JSON.stringify(favoriteCountries))
-      return;
+      localStorage.setItem("favCountries", JSON.stringify(favoriteCountries))
+        return;
 }
 
 export function deleteItemFromLocalStorage (countryName) {
