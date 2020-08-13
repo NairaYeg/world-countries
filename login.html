@@ -30,12 +30,13 @@
         <main>
             <div class="login-wrapper">
                 <form action="#" id="login-form">
-                    <input name="username" type="text" id="username" placeholder="Username">
-                    <input name="password" type="password" id="password" placeholder="Password">
+                    <input name="username" type="text" id="username" placeholder="Username" required minlength="5" maxlength="15">
+                    <input name="password" type="password" id="password" placeholder="Password" required autocomplete="on" minlength="5" maxlength="20"> 
                     <button type="submit" class="btn lg-btn">Log in</button>
                     <p id="register-link">Don't have an account? <a href="#">Register here</a></p>
                 </form>
             </div>
         </main>
+        <script type="module" src="./js/login.js"></script>
     </body>
 </html>

@@ -1,4 +1,4 @@
-@import url(./variables.css);
+@import url(./constants/variables.css);
 
 * {
     margin: 0;
@@ -97,12 +97,10 @@ tbody tr td {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* padding: 10px; */
 }
 
 tbody tr {
     box-shadow: var(--main-box-shadow);
-    /* background-color: var(--main-bg-color); */
 }
 
 .flag-img {
@@ -112,8 +110,6 @@ tbody tr {
 .country {
     cursor: pointer;
 }
-
-
 
 .bookmarkIcon {
     display: flex;

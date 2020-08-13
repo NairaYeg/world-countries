@@ -1,5 +1,5 @@
 import {createTableRow} from "./helpers/createTableRow.js"
-import {favoriteCountries} from "./helpers/constants.js"
+import {favoriteCountries} from "./constants/favCountries.js"
 import {doGet} from "./helpers/request.js"
 
 const tableBody = document.querySelector("tbody")

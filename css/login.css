@@ -1,4 +1,4 @@
-@import url(./variables.css);
+@import url(./constants/variables.css);
 
 * {
     margin: 0;
