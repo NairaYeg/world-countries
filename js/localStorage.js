@@ -1,17 +1,17 @@
 import {favoriteCountries} from "./constants/favCountries.js"
 
-export  function addItemLocalStorage () {
-      localStorage.setItem("favCountries", JSON.stringify(favoriteCountries))
+export  function addItemLocalStorage (key, value) {
+      localStorage.setItem(key, JSON.stringify(value))
         return;
 }
 
-export function deleteItemFromLocalStorage (countryName) {
+export function removeFromFavorites(countryName) {
          for(let i = 0; i < favoriteCountries.length; i++ ){
              if(favoriteCountries[i].name === countryName) {
               favoriteCountries.splice(i, 1);
-              localStorage.setItem("favCountries", JSON.stringify(favoriteCountries))
              }
          }
+         addItemLocalStorage("favoriteCountries",favoriteCountries)
          return;
 }
 

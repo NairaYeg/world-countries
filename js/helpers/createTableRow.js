@@ -1,7 +1,7 @@
 import {favoriteCountries} from "../constants/favCountries.js"
 import {BASE_URL} from "../constants/BASE_URL.js "
 import {addItemLocalStorage} from "../localStorage.js"
-import {deleteItemFromLocalStorage} from "../localStorage.js"
+import {removeFromFavorites} from "../localStorage.js"
 import {createBookmarkIcon} from "./createBookmarkIcon.js"
 
 
@@ -43,11 +43,11 @@ export function createTableRow(name, flag, tableBody) {
         nameCell.appendChild(icon);
         let favCountry = { name: `${name}`, url: `${BASE_URL}/name/${name}` };
         favoriteCountries.push(favCountry);
-        addItemLocalStorage();
+        addItemLocalStorage("favoriteCountries", favoriteCountries);
         return;
       }
       if (icon.classList.contains("fas")) {
-        deleteItemFromLocalStorage(name);
+        removeFromFavorites(name);
         icon.classList.remove("fas");
         icon.classList.add("far");
         nameCell.innerText = "";
