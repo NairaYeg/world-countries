@@ -1,9 +1,7 @@
 import {doGet} from "./helpers/request.js"
-// import {BASE_URL} from "./constants/BASE_URL.js"
-// import {createTableRow} from "./helpers/createTableRow.js"
-// import {favoriteCountries} from "./constants/favCountries.js"
 import {render} from "./helpers/render.js"
-import {createErrorMessage} from "./helpers/errorMessage.js"
+import {appendErrorMessage} from "./helpers/throwErrorMessage.js"
+import {debounce} from "./helpers/debounce.js"
 
 const tableBody = document.querySelector("tbody")
 const searchInput = document.querySelector("#search-input")
@@ -17,24 +15,29 @@ doGet("https://restcountries.eu/rest/v2/all")
 })
 
 
-searchInput.addEventListener("input", (event) => {
-    if (event.target.value.trim() !== "") {
-      let countyName = event.target.value;
-      tableBody.innerText = "Loading.....";
-      title.innerText = "Search....";
-      doGet(`https://restcountries.eu/rest/v2/name/${countyName}`)
-        .then((countries) => {
-          render(countries, tableBody);
-          title.innerText = "We are the one";
-        })
-        .catch((error) => {
-          createErrorMessage(tableBody);
-          title.innerText = "We are the one";
-        });
-    } else {
-      doGet("https://restcountries.eu/rest/v2/all").then((countries) => {
+function search(event) {
+  console.log(event.target.value);
+  if (event.target.value.trim() !== "") {
+    let countyName = event.target.value;
+    tableBody.innerText = "Loading.....";
+    title.innerText = "Search....";
+    doGet(`https://restcountries.eu/rest/v2/name/${countyName}`)
+      .then((countries) => {
         render(countries, tableBody);
+        title.innerText = "We are the one";
+      })
+      .catch((error) => {
+        appendErrorMessage(tableBody);
+        title.innerText = "We are the one";
       });
-    }
-  });
-  
+  } else {
+    doGet("https://restcountries.eu/rest/v2/all").then((countries) => {
+      render(countries, tableBody);
+    });
+  }
+}
+
+
+let effectiveSearch = debounce(search, 1000)
+
+searchInput.addEventListener("input", effectiveSearch);

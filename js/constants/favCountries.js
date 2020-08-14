@@ -1,4 +1,4 @@
-import {addItemLocalStorage} from "../localStorage.js"
+import {addItemLocalStorage} from "../helpers/addItemLocalStorage.js"
 
 export let favoriteCountries = [];
 

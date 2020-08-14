@@ -1,4 +1,4 @@
-export const createErrorMessage =(body) =>{
+export const appendErrorMessage =(body) =>{
     const errMessage = document.createElement("h3")
     errMessage.innerText = "You just got an error 404, congratulations !!!!!"
     body.append(errMessage)
