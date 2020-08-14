@@ -5,7 +5,7 @@ const password = document.querySelector("#password")
 const form = document.getElementById("login-form")
 const btn = document.querySelector(".lg-btn")
 
-btn.addEventListener("click", (event)=>{
+form.addEventListener("submit", (event)=>{
      event.preventDefault()
      window.location.href = "index.html"
 })

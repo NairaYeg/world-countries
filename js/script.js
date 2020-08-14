@@ -6,6 +6,7 @@ import {favoriteCountries} from "./constants/favCountries.js"
 
 export const tableBody = document.querySelector("tbody")
 const searchInput = document.querySelector("#search-input")
+const title = document.querySelector("h1")
 
 tableBody.innerText = "Loading....."
 
@@ -22,16 +23,29 @@ searchInput.addEventListener("input", (event)=>{
     if(event.target.value.trim() !== ""){
     let countyName = event.target.value
     tableBody.innerText = 'Loading.....'
+    title.innerText = "Search...."
     doGet(`https://restcountries.eu/rest/v2/name/${countyName}`)
     .then(countries => {
         tableBody.innerText = ""
         countries.forEach(country => {
             createTableRow(country.name, country.flag, tableBody)
         })
+        title.innerText = "We are the one"
     })
-    .catch((err) => {
-        tableBody.innerText = `${err.message}`
+    .catch((error) => {
+        let errMessage = document.createElement("h3")
+        errMessage.innerText = "You just got an error 404, congratulations !!!!!"
+         tableBody.append(errMessage)
+         title.innerText = "We are the one"
     })
+    }else{
+        doGet("https://restcountries.eu/rest/v2/all")
+        .then(countries => {
+         tableBody.innerText = ""
+          countries.forEach((country) => {
+           createTableRow(country.name, country.flag, tableBody)
+       });
+   })
     }
-     return ;
+
 })
