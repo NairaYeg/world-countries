@@ -4,7 +4,6 @@ import {addItemLocalStorage} from "./addItemLocalStorage.js"
 import {removeItem} from "./removeItemFromArr.js"
 import {createBookmarkIcon} from "./createBookmarkIcon.js"
 
-
 export function createTableRow(name, flag, tableBody) {
   const newRow = tableBody.insertRow(tableBody.length);
 
@@ -57,6 +56,12 @@ export function createTableRow(name, flag, tableBody) {
       return;
     }
   });
+
+    flagCell.addEventListener("click", ()=>{
+      // country = name;
+      console.log(country)
+      // window.location.href = "country.html"
+    })
 
   newRow.classList.add("country");
 

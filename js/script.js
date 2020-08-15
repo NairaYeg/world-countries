@@ -38,6 +38,6 @@ function search(event) {
 }
 
 
-let effectiveSearch = debounce(search, 1000)
+let effectiveSearch = debounce(search, 500)
 
 searchInput.addEventListener("input", effectiveSearch);
