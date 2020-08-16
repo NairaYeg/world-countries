@@ -5,10 +5,9 @@
  * @returns {undefined}
  */
 
-export function addItemLocalStorage(key, value) {
-  localStorage.setItem(key, JSON.stringify(value));
-  return;
+export function addItemToLocalStorage(key, value) {
+  localStorage.setItem(key, JSON.stringify(value)); //@TODO add try catch 
+  return value;
 }
-
 
 

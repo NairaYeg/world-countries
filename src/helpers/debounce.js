@@ -16,4 +16,3 @@ export const debounce = (fn, ms) => {
       timeout = setTimeout(fnCall, ms);
     };
   }
-  
