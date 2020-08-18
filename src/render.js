@@ -1,20 +1,23 @@
-import {createTableRow} from "./createTableRow.js"
-import {favoriteCountries} from "../constants/favCountries.js" 
-import {BASE_URL} from "../constants/BASE_URL.js "
-import {addItemLocalStorage} from "./helpers/localStorage.js"
-import {removeItem} from "./removeItemFromArr.js"
-import {createBookmarkIcon} from "./createBookmarkIcon.js"
+import {getFavoriteCountries} from "./services/getFavoriteCountries.js" 
+import {BASE_URL} from "./constants/api.js"
+import {addItemToLocalStorage} from "./helpers/localStorage.js"
+import {removeItemByValue} from "./helpers/array.helper.js"
+import {title} from "./index.js"
 
-export const  render = (countries, body) =>{
+
+export const  render = (countries, body, titleContext = null) =>{
+   if(title){
+     title.innerText = `${titleContext}`
+   }
     body.innerText = ""
     countries.forEach((state) => {
     createTableRow(state.name, state.flag, body)
     });
 }
 
-export const renderErrorMessage =(body) =>{
+export const renderErrorMessage =(body, message) =>{
     const errMessage = document.createElement("h3")
-    errMessage.innerText = "You just got an error 404, congratulations !!!!!"
+    errMessage.innerText = `${message}`
     body.append(errMessage)
 }
 
@@ -38,7 +41,7 @@ export const createTableRow = (name, flag, tableBody) =>{
     nameCell.appendChild(icon);
   
     nameCell.classList.add("bookmarkIcon");
-    favoriteCountries.forEach((country) => {
+    getFavoriteCountries().forEach((country) => {
       if (country.name === name) {
         nameCell.appendChild(countryName);
         icon.classList.remove("far");
@@ -55,13 +58,16 @@ export const createTableRow = (name, flag, tableBody) =>{
         nameCell.appendChild(countryName);
         nameCell.appendChild(icon);
         let favCountry = { name: `${name}`, url: `${BASE_URL}/name/${name}` };
-        favoriteCountries.push(favCountry);
-        addItemLocalStorage("favoriteCountries", favoriteCountries);
+        
+        getFavoriteCountries().push(favCountry);
+        getFavoriteCountries().unshift("Blaaa")
+        console.log(getFavoriteCountries())
+        addItemToLocalStorage("favoriteCountries", getFavoriteCountries());
         return;
       }
       if (icon.classList.contains("fas")) {
-        removeItem(favoriteCountries, name);
-        addItemLocalStorage("favoriteCountries", favoriteCountries);
+        removeItemByValue(getFavoriteCountries(), name);
+        addItemToLocalStorage("favoriteCountries", getFavoriteCountries());
         icon.classList.remove("fas");
         icon.classList.add("far");
         nameCell.innerText = "";
@@ -70,13 +76,7 @@ export const createTableRow = (name, flag, tableBody) =>{
         return;
       }
     });
-  
-      flagCell.addEventListener("click", ()=>{
-        // country = name;
-        console.log(country)
-        // window.location.href = "country.html"
-      })
-  
+
     newRow.classList.add("country");
   
     return newRow;

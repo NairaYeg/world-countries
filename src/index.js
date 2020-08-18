@@ -1,17 +1,23 @@
 import {doGet} from "./helpers/request.js"
-import {render} from "./helpers/render.js"
-import {appendErrorMessage} from "./helpers/throwErrorMessage.js"
+import {render} from "./render.js"
+import {renderErrorMessage} from "./render.js"
 import {debounce} from "./helpers/debounce.js"
+
 
 const tableBody = document.querySelector("tbody")
 const searchInput = document.querySelector("#search-input")
-const title = document.querySelector("h1")
+export const title = document.querySelector("h1")
 
 tableBody.innerText = "Loading....."
 
 doGet("https://restcountries.eu/rest/v2/all")
 .then(countries => {
      render(countries, tableBody)
+})
+.catch((err)=>{
+  tableBody.innerText = "";
+  let errorMessage = "Oops!!!! Something has gone wrong..."
+  renderErrorMessage(tableBody, errorMessage);
 })
 
 
@@ -23,13 +29,16 @@ function search(event) {
     title.innerText = "Search....";
     doGet(`https://restcountries.eu/rest/v2/name/${countyName}`)
       .then((countries) => {
-        render(countries, tableBody);
-        title.innerText = "We are the one";
+        render(countries, tableBody, "We are the one");
+        // title.innerText = "We are the one";
       })
       .catch((error) => {
-        appendErrorMessage(tableBody);
-        title.innerText = "We are the one";
+        tableBody.innerText = "";
+        let errorMessage = "You just got an error 404, congratulations !!!!!"
+        renderErrorMessage(tableBody, errorMessage,"We are the one" );
+        // title.innerText = "We are the one";
       });
+      
   } else {
     doGet("https://restcountries.eu/rest/v2/all").then((countries) => {
       render(countries, tableBody);

@@ -1,9 +1,10 @@
-import {createTableRow} from "./helpers/createTableRow.js"
+import {createTableRow} from "./render.js"
 import {doGet} from "./helpers/request.js"
+import {getFavoriteCountries} from "./services/getFavoriteCountries.js"
 // import {debounce} from "./helpers/debounce.js"
 // import {render} from "./helpers/render.js"
 // import {appendErrorMessage} from "./helpers/throwErrorMessage.js"
-import {getFavoriteCountries} from "./services/favorites.js"
+
 
 
 const searchInput = document.querySelector("#search-input")
