@@ -21,14 +21,14 @@ body {
 
 header {
     height: 70px;
-    width: 100%;
+    /* width: 100%; */
     padding: 0px 30px;
+    /* position: fixed; */
     background: var(--main-bg-color);
     z-index: 5;
     color: white;
     text-align: center;
     text-transform: uppercase;
-    position: fixed;
 }
 
 .grid-container {
@@ -86,12 +86,12 @@ h1:hover {
 
 tbody {
     display: grid;
-    grid-gap: 50px;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 50px;
 
-    margin: 100px 50px;
-    z-index: 5;
+    margin: 30px 50px;
     padding: 10px;
+    z-index: 5;
 }
 
 tbody tr td {
@@ -133,10 +133,6 @@ a {
     header {
         height: 120px;
     }
-
-    tbody {
-        margin-top: 150px;
-    }
 }
 
 @media (max-width: 600px) {
@@ -149,9 +145,5 @@ a {
 
     header {
         height: 200px;
-    }
-
-    tbody {
-        margin-top: 220px;
     }
 }
