@@ -1,11 +1,11 @@
-import {getFavoriteCountries} from "./services/getFavoriteCountries.js" 
+import {getFavoriteCountries} from "./services/getFavoriteCountries.js"
 import {BASE_URL} from "./constants/api.js"
 import {addItemToLocalStorage} from "./helpers/localStorage.js"
 import {removeItemByValue} from "./helpers/array.helper.js"
-import {title} from "./index.js"
 
+export let favoriteCountries = [...getFavoriteCountries()]
 
-export const  render = (countries, body, titleContext = null) =>{
+export const  render = (body, countries, title, titleContext="We are the one") =>{
    if(title){
      title.innerText = `${titleContext}`
    }
@@ -13,9 +13,13 @@ export const  render = (countries, body, titleContext = null) =>{
     countries.forEach((state) => {
     createTableRow(state.name, state.flag, body)
     });
-}
+} 
 
-export const renderErrorMessage =(body, message) =>{
+export const renderErrorMessage =(body, message, title, titleContext="We are the one") =>{
+  if(title){
+    title.innerText = `${titleContext}`
+    }
+    body.innerText = "";
     const errMessage = document.createElement("h3")
     errMessage.innerText = `${message}`
     body.append(errMessage)
@@ -41,7 +45,7 @@ export const createTableRow = (name, flag, tableBody) =>{
     nameCell.appendChild(icon);
   
     nameCell.classList.add("bookmarkIcon");
-    getFavoriteCountries().forEach((country) => {
+    favoriteCountries.forEach((country) => {
       if (country.name === name) {
         nameCell.appendChild(countryName);
         icon.classList.remove("far");
@@ -59,15 +63,13 @@ export const createTableRow = (name, flag, tableBody) =>{
         nameCell.appendChild(icon);
         let favCountry = { name: `${name}`, url: `${BASE_URL}/name/${name}` };
         
-        getFavoriteCountries().push(favCountry);
-        getFavoriteCountries().unshift("Blaaa")
-        console.log(getFavoriteCountries())
-        addItemToLocalStorage("favoriteCountries", getFavoriteCountries());
+        favoriteCountries.push(favCountry)
+        addItemToLocalStorage("favoriteCountries", favoriteCountries);
         return;
       }
       if (icon.classList.contains("fas")) {
-        removeItemByValue(getFavoriteCountries(), name);
-        addItemToLocalStorage("favoriteCountries", getFavoriteCountries());
+        removeItemByValue(favoriteCountries, name);
+        addItemToLocalStorage("favoriteCountries", favoriteCountries);
         icon.classList.remove("fas");
         icon.classList.add("far");
         nameCell.innerText = "";
@@ -82,6 +84,8 @@ export const createTableRow = (name, flag, tableBody) =>{
     return newRow;
   }
   
+
+
 
   /**
  *A function create bookmark icon,  accept  one argument, icon class, the look of the icon  depends on that class.

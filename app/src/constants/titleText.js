@@ -1,0 +1,1 @@
+export const titleText = "We are the one";
