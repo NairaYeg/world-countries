@@ -21,13 +21,14 @@ body {
 
 header {
     height: 70px;
-
+    width: 100%;
     padding: 0px 30px;
     background: var(--main-bg-color);
     z-index: 5;
     color: white;
     text-align: center;
     text-transform: uppercase;
+    position: fixed;
 }
 
 .grid-container {
@@ -88,7 +89,7 @@ tbody {
     grid-gap: 50px;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
-    margin: 50px;
+    margin: 100px 50px;
     z-index: 5;
     padding: 10px;
 }
@@ -119,4 +120,38 @@ tbody tr {
 a {
     text-decoration: none;
     color: white;
+}
+
+
+@media (max-width: 992px) {
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2 ,1fr);
+        margin-top: 10px;
+    }
+
+    header {
+        height: 120px;
+    }
+
+    tbody {
+        margin-top: 150px;
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        grid-gap: 5px;
+        margin-top: 5px;
+    }
+
+    header {
+        height: 200px;
+    }
+
+    tbody {
+        margin-top: 220px;
+    }
 }

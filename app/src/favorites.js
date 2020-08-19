@@ -10,3 +10,5 @@ favoriteCountries.forEach(country => {
         createTableRow(r[0].name, r[0].flag, tableBody)
       })
 })
+
+
