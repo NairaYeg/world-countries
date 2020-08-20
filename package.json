@@ -1,0 +1,27 @@
+{
+  "name": "countries",
+  "version": "1.0.0",
+  "description": "we are the one",
+  "main": "login.js",
+  "scripts": {
+    "dev": "parcel ./app/login.html",
+    "build": "parcel build ./app/login.html --public-url/dist",
+    "deploy": "gh-pages -d app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NairaYeg/world-countries.git"
+  },
+  "author": "Naira Yeghiazaryan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NairaYeg/world-countries/issues"
+  },
+  "homepage": "https://github.com/NairaYeg/world-countries#readme",
+  "devDependencies": {
+    "bundler": "^0.8.0",
+    "parcel": "^1.12.4",
+    "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {}
+}
