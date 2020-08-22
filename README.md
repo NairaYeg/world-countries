@@ -13,6 +13,9 @@
  *  All countries
     - Allow searching for a country (validated - only string)
     - Allow to add/remove the country to/from favorites
+ * Favorites
+    - List of the countries that the user added to favorites
+    - Allow to add/remove the country to/from favorites   
    
  
  
