@@ -2,7 +2,7 @@
   "name": "countries",
   "version": "1.0.0",
   "description": "about world countries",
-  "main": "index.js",
+  "main": "login.js",
   "scripts": {
     "dev": "parcel ./app/login.html",
     "build": "parcel build ./app/login.html",
