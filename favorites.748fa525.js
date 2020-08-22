@@ -210,6 +210,50 @@ function removeItemByValue(arr, value) {
 
   return arr;
 }
+},{}],"src/helpers/sessionStorage.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getItemFromSessionStorage = exports.addItemToSessionStorage = void 0;
+
+var addItemToSessionStorage = function addItemToSessionStorage(key, value) {
+  sessionStorage.setItem(key, JSON.stringify(value));
+  return value;
+};
+
+exports.addItemToSessionStorage = addItemToSessionStorage;
+
+var getItemFromSessionStorage = function getItemFromSessionStorage(key) {
+  var current = JSON.parse(sessionStorage.getItem(key));
+  return current;
+};
+
+exports.getItemFromSessionStorage = getItemFromSessionStorage;
+},{}],"src/helpers/makeRowContent.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.makeRowContent = void 0;
+
+var makeRowContent = function makeRowContent(key, value) {
+  var content = document.createElement("div");
+  var contentKey = document.createElement("h3");
+  var contentValue = document.createElement("p");
+  content.classList.add("grid-wrapper");
+  contentKey.textContent = "".concat(key);
+  contentValue.textContent = "".concat(value);
+  contentKey.classList.add("key");
+  contentValue.classList.add("value");
+  content.appendChild(contentKey);
+  content.appendChild(contentValue);
+  return content;
+};
+
+exports.makeRowContent = makeRowContent;
 },{}],"src/render.js":[function(require,module,exports) {
 "use strict";
 
@@ -225,6 +269,10 @@ var _api = require("./constants/api.js");
 var _localStorage = require("./helpers/localStorage.js");
 
 var _arrayHelper = require("./helpers/array.helper.js");
+
+var _sessionStorage = require("./helpers/sessionStorage.js");
+
+var _makeRowContent = require("./helpers/makeRowContent.js");
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
@@ -273,6 +321,7 @@ var renderErrorMessage = function renderErrorMessage(body, message, title) {
 exports.renderErrorMessage = renderErrorMessage;
 
 var createTableRow = function createTableRow(name, flag, tableBody) {
+  var country = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
   var newRow = tableBody.insertRow(tableBody.length);
   var icon = createBookmarkIcon("far");
   var nameCell = newRow.insertCell(0);
@@ -321,6 +370,38 @@ var createTableRow = function createTableRow(name, flag, tableBody) {
       return;
     }
   });
+  flagCell.addEventListener("click", function () {
+    (0, _sessionStorage.addItemToSessionStorage)("currentCountry", "".concat(name));
+    window.location.href = "country.html";
+  });
+
+  if (country) {
+    img.style.width = "400px";
+    var secondRow = tableBody.insertRow(tableBody.length);
+    secondRow.classList.add("info-wrapper");
+    var nativeName = secondRow.insertCell(0);
+    var capital = secondRow.insertCell(1);
+    var region = secondRow.insertCell(2);
+    var population = secondRow.insertCell(3);
+    var borders = secondRow.insertCell(4);
+    var timezone = secondRow.insertCell(5);
+    var domain = secondRow.insertCell(6);
+    var nativeNameCellContent = (0, _makeRowContent.makeRowContent)("Native Name:", country.nativeName.trim());
+    var capitalCellContent = (0, _makeRowContent.makeRowContent)("Capital City:", country.capital.trim());
+    var domainCellContent = (0, _makeRowContent.makeRowContent)("Top Level Domain:", country.topLevelDomain);
+    var regionCellContent = (0, _makeRowContent.makeRowContent)("Region:", country.region.trim());
+    var populationCellContent = (0, _makeRowContent.makeRowContent)("Population:", country.population);
+    var bordersCellContent = (0, _makeRowContent.makeRowContent)("Borders:", country.borders.join("  ").trim());
+    var timezoneCellContent = (0, _makeRowContent.makeRowContent)("Timezones:", country.timezones.join('').trim());
+    nativeName.append(nativeNameCellContent);
+    capital.append(capitalCellContent);
+    domain.append(domainCellContent);
+    region.append(regionCellContent);
+    population.append(populationCellContent);
+    borders.append(bordersCellContent);
+    timezone.append(timezoneCellContent);
+  }
+
   newRow.classList.add("country");
   return newRow;
 };
@@ -342,7 +423,7 @@ var createBookmarkIcon = function createBookmarkIcon(classListItem) {
 };
 
 exports.createBookmarkIcon = createBookmarkIcon;
-},{"./services/getFavoriteCountries.js":"src/services/getFavoriteCountries.js","./constants/api.js":"src/constants/api.js","./helpers/localStorage.js":"src/helpers/localStorage.js","./helpers/array.helper.js":"src/helpers/array.helper.js"}],"src/helpers/request.js":[function(require,module,exports) {
+},{"./services/getFavoriteCountries.js":"src/services/getFavoriteCountries.js","./constants/api.js":"src/constants/api.js","./helpers/localStorage.js":"src/helpers/localStorage.js","./helpers/array.helper.js":"src/helpers/array.helper.js","./helpers/sessionStorage.js":"src/helpers/sessionStorage.js","./helpers/makeRowContent.js":"src/helpers/makeRowContent.js"}],"src/helpers/request.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -427,7 +508,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55492" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60365" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
