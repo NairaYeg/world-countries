@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "parcel ./app/login.html",
     "build": "parcel build ./app/login.html",
-    "deploy": "gh-pages -d app"
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
