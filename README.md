@@ -3,9 +3,9 @@
 
 #### This  little project I made  during my ACA training course
 
-## task description
-#### Create a website for searching for information about the country.
-#### [API](https://restcountries.eu/)
+## Task description
+#### Create a website for searching for information about the country. #### [API](https://restcountries.eu/)
+
  
 
  ## Pages
