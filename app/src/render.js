@@ -2,6 +2,7 @@ import {getFavoriteCountries} from "./services/getFavoriteCountries.js"
 import {BASE_URL} from "./constants/api.js"
 import {addItemToLocalStorage} from "./helpers/localStorage.js"
 import {removeItemByValue} from "./helpers/array.helper.js"
+import {addItemToSessionStorage} from "./helpers/sessionStorage.js"
 
 export let favoriteCountries = [...getFavoriteCountries()]
 
@@ -15,6 +16,7 @@ export const  render = (body, countries, title, titleContext="We are the one") =
     });
 } 
 
+
 export const renderErrorMessage =(body, message, title, titleContext="We are the one") =>{
   if(title){
     title.innerText = `${titleContext}`
@@ -24,6 +26,8 @@ export const renderErrorMessage =(body, message, title, titleContext="We are the
     errMessage.innerText = `${message}`
     body.append(errMessage)
 }
+
+
 
 export const createTableRow = (name, flag, tableBody) =>{
     const newRow = tableBody.insertRow(tableBody.length);
@@ -78,6 +82,11 @@ export const createTableRow = (name, flag, tableBody) =>{
         return;
       }
     });
+      
+    flagCell.addEventListener("click", ()=>{
+        addItemToSessionStorage("currentCountry", `${name}`)
+        window.location.href = "country.html"
+    })
 
     newRow.classList.add("country");
   
