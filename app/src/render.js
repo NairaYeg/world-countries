@@ -3,6 +3,7 @@ import {BASE_URL} from "./constants/api.js"
 import {addItemToLocalStorage} from "./helpers/localStorage.js"
 import {removeItemByValue} from "./helpers/array.helper.js"
 import {addItemToSessionStorage} from "./helpers/sessionStorage.js"
+import {makeRowContent} from "./helpers/makeRowContent.js"
 
 export let favoriteCountries = [...getFavoriteCountries()]
 
@@ -29,7 +30,7 @@ export const renderErrorMessage =(body, message, title, titleContext="We are the
 
 
 
-export const createTableRow = (name, flag, tableBody) =>{
+export const createTableRow = (name, flag, tableBody, country = null) =>{
     const newRow = tableBody.insertRow(tableBody.length);
   
     let icon = createBookmarkIcon("far");
@@ -88,6 +89,36 @@ export const createTableRow = (name, flag, tableBody) =>{
         window.location.href = "country.html"
     })
 
+    if(country){
+      img.style.width = "400px";
+      const secondRow = tableBody.insertRow(tableBody.length);
+      secondRow.classList.add("info-wrapper")
+      const nativeName = secondRow.insertCell(0);
+      const capital = secondRow.insertCell(1);
+      const region = secondRow.insertCell(2)
+      const population = secondRow.insertCell(3)
+      const borders = secondRow.insertCell(4)
+      const timezone = secondRow.insertCell(5)
+      const domain = secondRow.insertCell(6)
+    
+
+      let nativeNameCellContent = makeRowContent("Native Name:", country.nativeName.trim())
+      let capitalCellContent = makeRowContent("Capital City:", country.capital.trim())
+      let domainCellContent = makeRowContent("Top Level Domain:", country.topLevelDomain)
+      let regionCellContent = makeRowContent("Region:", country.region.trim())
+      let populationCellContent = makeRowContent("Population:", country.population)
+      let bordersCellContent = makeRowContent("Borders:", country.borders.join("  ").trim())
+      let timezoneCellContent = makeRowContent("Timezones:", country.timezones.join('').trim())
+      nativeName.append(nativeNameCellContent)
+      capital.append(capitalCellContent)
+      domain.append(domainCellContent)
+      region.append(regionCellContent)
+      population.append(populationCellContent)
+      borders.append(bordersCellContent)
+      timezone.append(timezoneCellContent)
+
+    }
+
     newRow.classList.add("country");
   
     return newRow;
@@ -110,3 +141,6 @@ export const createBookmarkIcon=(classListItem) =>{
     return icon;
   }
   
+
+
+

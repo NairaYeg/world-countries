@@ -1,0 +1,29 @@
+* {
+    margin: 0 ;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+
+.key {
+    font-style: italic; 
+}
+
+.value {
+    font-size: 23px;
+}
+
+tbody {
+    display: flex!important;
+}
+
+.info-wrapper{
+    box-shadow: none !important;
+}
+
+.grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 30px;
+}

@@ -11,11 +11,10 @@ let currentCountryURL = BASE_URL + `/name/${currentCountry}`
 
 title.innerText = currentCountry
 
-body.style.width = "300px"
-
-
 doGet(currentCountryURL)
  .then(r => {
-    createTableRow(r[0].name, r[0].flag, body)
-
+    let country = r[0]
+    let name = r[0].name
+    let flag = r[0].flag
+    createTableRow(name, flag, body, country)
  })
