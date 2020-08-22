@@ -5,6 +5,8 @@
 
 ## task description
 #### Create a website for searching for information about the country.
+#### [API](https://restcountries.eu/)
+ 
 
  ## Pages
 
@@ -17,9 +19,15 @@
     - List of the countries that the user added to favorites
     - Allow to add/remove the country to/from favorites   
    
+ ## Stack
+  * HTML5 
+  * CSS3
+     * GRID
+  * DOM   
+   
  
  
- 
+  [We are the one](nairayeg.github.io/world-countries)
  
  
  
