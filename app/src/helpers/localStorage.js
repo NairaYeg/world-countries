@@ -6,8 +6,13 @@
  */
 
 export function addItemToLocalStorage(key, value) {
-  localStorage.setItem(key, JSON.stringify(value)); //@TODO add try catch 
-  return value;
+  try {
+    localStorage.setItem(key, JSON.stringify(value)); //@TODO add try catch 
+    return value;
+  }catch (error){
+    throw new Error ("Not possible add item in localStorage")
+  }
+  
 }
 
 
@@ -18,7 +23,11 @@ export function addItemToLocalStorage(key, value) {
  */
 
 export function getItemFromLocalStorage(key){
-  return JSON.parse(localStorage.getItem(`${key}`));
+  try {
+    return JSON.parse(localStorage.getItem(`${key}`));
+  } catch (error) {
+    throw new Error ("Not possible get  item  from localStorage")
+  }
 }
 
 
@@ -29,6 +38,10 @@ export function getItemFromLocalStorage(key){
  */
 
 export function removeItemFromLocalStorage(key){
-  localStorage.removeItem(`${key}`);
-  return key;
+  try {
+    localStorage.removeItem(`${key}`);
+    return key;
+  } catch (error) {
+    throw new Error ("Not possible  delete   item  from localStorage")
+  }
 }
