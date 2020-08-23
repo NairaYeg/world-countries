@@ -243,6 +243,7 @@ var makeRowContent = function makeRowContent(key, value) {
   var content = document.createElement("div");
   var contentKey = document.createElement("h3");
   var contentValue = document.createElement("p");
+  var decoration = document.createElement("hr");
   content.classList.add("grid-wrapper");
   contentKey.textContent = "".concat(key);
   contentValue.textContent = "".concat(value);
@@ -250,6 +251,7 @@ var makeRowContent = function makeRowContent(key, value) {
   contentValue.classList.add("value");
   content.appendChild(contentKey);
   content.appendChild(contentValue);
+  content.appendChild(decoration);
   return content;
 };
 
@@ -587,7 +589,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60365" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53476" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
