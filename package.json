@@ -1,17 +1,11 @@
 {
   "name": "countries",
   "version": "1.0.0",
-  "description": "about world countries",
+  "description": "* Login page (only UI)\r     - Login and Password inputs (both are validated, password - min 5 characters)\r  *  All countries\r     - Allow searching for a country (validated - only string)\r     - Allow to add/remove the country to/from favorites\r  * Favorites\r     - List of the countries that the user added to favorites\r     - Allow to add/remove the country to/from favorites \r  * Country\r     - Allow getting info about each country.",
   "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {
-    "gh-pages": "^3.1.0",
-    "parcel-bundler": "^1.12.4"
-  },
   "scripts": {
-    "dev": "parcel index.html --public-url ./dist",
+    "dev": "parcel ./app/index.html",
     "build": "parcel build index.html --public-url ./dist",
-    "start": "parcel index.html",
     "deploy": "gh-pages -d dist"
   },
   "repository": {
@@ -23,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/NairaYeg/world-countries/issues"
   },
-  "homepage": "https://github.com/NairaYeg/world-countries#readme"
+  "homepage": "https://github.com/NairaYeg/world-countries#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {
+    "gh-pages": "^3.1.0"
+  }
 }
