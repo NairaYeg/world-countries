@@ -5,16 +5,18 @@
     overflow: hidden;
 }
 
-
 .key {
     font-style: italic; 
 }
 
 .value {
-    font-size: 23px;
+    font-size: 20px;
+    color:white;
+    word-wrap:break-word;
 }
 
 tbody {
+    margin-top: 70px;
     display: flex!important;
 }
 
@@ -25,5 +27,14 @@ tbody {
 .grid-wrapper {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 30px;
+    grid-column-gap: 40px;
+}
+
+.key:hover, .value:hover {
+    cursor: pointer;
+    color: black;
+} 
+
+.value:hover {
+    font-size: 22px;
 }
