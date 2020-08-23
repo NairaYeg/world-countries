@@ -34,7 +34,3 @@ tbody {
     cursor: pointer;
     color: black;
 } 
-
-.value:hover {
-    font-size: 22px;
-}
