@@ -20,7 +20,7 @@
     - List of the countries that the user added to favorites
     - Allow to add/remove the country to/from favorites 
  * Country
-    -Allow getting info about each country.
+    - Allow getting info about each country.
    
  ## Stack
   * HTML5 
