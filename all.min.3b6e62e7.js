@@ -3651,7 +3651,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53596" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51775" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -3828,4 +3828,4 @@ function hmrAcceptRun(bundle, id) {
   }
 }
 },{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/assets/fontawesome-free-5.14.0-web/js/all.min.js"], null)
-//# sourceMappingURL=/all.min.3b6e62e7.js.map
+//# sourceMappingURL=dist/all.min.3b6e62e7.js.map
